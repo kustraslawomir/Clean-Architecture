@@ -1,0 +1,15 @@
+ext {
+    /*
+    Android
+     */
+    androidBuildToolsVersion = '26.0.0'
+    androidMinSdkVersion = 21
+    androidTargetSdkVersion = 26
+    androidCompileSdkVersion = 26
+    kotlinVersion = '1.1.3-2'
+
+    /*
+    Libraries
+     */
+    supportLobraryVersion = '26.0.1'
+}
