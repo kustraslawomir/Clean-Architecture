@@ -9,7 +9,7 @@ class ObserveCurrencyUseCase(postExecutionThread: PostExecutionThread,
                              private val repository: Repository)
     : CompletableUseCase<ObserveCurrencyUseCase.Params>(postExecutionThread) {
 
-    override fun getCompletableUseCase(params: Params?): Completable {
+    public override fun getCompletableUseCase(params: Params?): Completable {
         if (params?.id == null) throw IllegalArgumentException("id of currency cannot be null")
         return repository.observeCurrency(params.id)
     }

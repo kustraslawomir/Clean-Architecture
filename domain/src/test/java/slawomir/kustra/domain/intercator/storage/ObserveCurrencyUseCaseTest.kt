@@ -11,9 +11,9 @@ import slawomir.kustra.domain.executor.PostExecutionThread
 import slawomir.kustra.domain.repository.Repository
 import slawomir.kustra.domain.test.DataFactory
 
-class StopObservingCurrencyUseCaseTest {
+class ObserveCurrencyUseCaseTest {
 
-    private lateinit var stopObservingCurrencyUseCase: StopObservingCurrencyUseCase
+    private lateinit var observeCurrencyUseCase: ObserveCurrencyUseCase
     @Mock
     lateinit var repository: Repository
     @Mock
@@ -22,26 +22,26 @@ class StopObservingCurrencyUseCaseTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        stopObservingCurrencyUseCase = StopObservingCurrencyUseCase(postExecutionThread, repository)
+        observeCurrencyUseCase = ObserveCurrencyUseCase(postExecutionThread, repository)
     }
 
     @Test
-    fun stopObservingCurrencyUseCaseCompletes() {
-        stubStopObservingCurrencyUseCase(Completable.complete())
-        val observable = stopObservingCurrencyUseCase.getCompletableUseCase(
-                StopObservingCurrencyUseCase.Params.forStopObservingCurrency(DataFactory.randomInt()))
+    fun observeCurrencyUseCaseCompletes() {
+        stubObserveCurrencyUseCase(Completable.complete())
+        val observable = observeCurrencyUseCase.getCompletableUseCase(
+                ObserveCurrencyUseCase.Params.forObserveUseCase(DataFactory.randomInt()))
                 .test()
         observable.assertComplete()
     }
 
     @Test(expected = IllegalArgumentException::class)
-    fun stopObservingThrowsException() {
-        stopObservingCurrencyUseCase.getCompletableUseCase(any())
+    fun observeThrowsException() {
+        observeCurrencyUseCase.getCompletableUseCase(any())
                 .test()
     }
 
-    private fun stubStopObservingCurrencyUseCase(completable: Completable) {
-        whenever(repository.stopObservingCurrency(any()))
+    private fun stubObserveCurrencyUseCase(completable: Completable) {
+        whenever(repository.observeCurrency(any()))
                 .thenReturn(completable)
     }
 }
