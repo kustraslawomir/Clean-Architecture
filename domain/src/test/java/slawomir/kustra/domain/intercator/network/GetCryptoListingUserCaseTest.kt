@@ -39,8 +39,7 @@ class GetCryptoListingUserCaseTest {
         val observer = getCryptoListingUserCase.getObservableUseCase().test()
         observer.assertValue(mockCryptoListingResponse)
     }
-
-
+    
     private fun stubGetCryptoListingUseCase(observable: Observable<CryptoListingResponse>) {
         whenever(repository.getCryptoCurrencyListing()).thenReturn(observable)
     }
