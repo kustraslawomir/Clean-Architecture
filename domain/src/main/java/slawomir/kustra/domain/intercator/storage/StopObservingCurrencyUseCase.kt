@@ -9,7 +9,7 @@ class StopObservingCurrencyUseCase(postExecutionThread: PostExecutionThread,
                                    private val  repository: Repository)
     : CompletableUseCase<StopObservingCurrencyUseCase.Params>(postExecutionThread) {
 
-    override fun getCompletableUseCase(params: StopObservingCurrencyUseCase.Params?): Completable {
+    public override fun getCompletableUseCase(params: StopObservingCurrencyUseCase.Params?): Completable {
         if (params==null) throw IllegalArgumentException("id of currency cannot be null")
         return repository.stopObservingCurrency(params.id)
     }
