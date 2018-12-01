@@ -36,7 +36,7 @@ class ObserveCurrencyUseCaseTest {
 
     @Test(expected = IllegalArgumentException::class)
     fun observeThrowsException() {
-        observeCurrencyUseCase.getCompletableUseCase(any())
+        observeCurrencyUseCase.getCompletableUseCase()
                 .test()
     }
 
