@@ -12,5 +12,5 @@ interface Repository {
 
     fun stopObservingCurrency(id: Int) : io.reactivex.Completable
 
-    fun getObservedCurrencies() : io.reactivex.Observable<Coin>
+    fun getObservedCurrencies() : io.reactivex.Observable<List<Coin>>
 }

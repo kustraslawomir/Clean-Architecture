@@ -7,9 +7,8 @@ import slawomir.kustra.domain.model.listing.CryptoListingResponse
 import slawomir.kustra.domain.repository.Repository
 
 class GetCryptoListingUserCase constructor(private val repository: Repository,
-                                           private val postExecutionThread: PostExecutionThread)
+                                           postExecutionThread: PostExecutionThread)
     : ObservableUseCase<CryptoListingResponse, Nothing?>(postExecutionThread) {
-
 
     override fun getObservableUseCase(params: Nothing?): Observable<CryptoListingResponse> =
             repository.getCryptoCurrencyListing()
