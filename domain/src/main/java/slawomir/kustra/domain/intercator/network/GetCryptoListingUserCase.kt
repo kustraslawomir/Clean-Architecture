@@ -10,6 +10,6 @@ class GetCryptoListingUserCase constructor(private val repository: Repository,
                                            postExecutionThread: PostExecutionThread)
     : ObservableUseCase<CryptoListingResponse, Nothing?>(postExecutionThread) {
 
-    override fun getObservableUseCase(params: Nothing?): Observable<CryptoListingResponse> =
+    public override fun getObservableUseCase(params: Nothing?): Observable<CryptoListingResponse> =
             repository.getCryptoCurrencyListing()
 }

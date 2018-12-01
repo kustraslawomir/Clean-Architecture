@@ -1,6 +1,20 @@
 package slawomir.kustra.domain.model.listing
 
 class Coin {
+    constructor(id: Int?, name: String?, symbol: String?, slug: String?, circulatingSupply: Double?, totalSupply: Int?, maxSupply: Int?, dateAdded: String?, numMarketPairs: Int?, cmcRank: Int?, lastUpdated: String?, quote: Quote?) {
+        this.id = id
+        this.name = name
+        this.symbol = symbol
+        this.slug = slug
+        this.circulatingSupply = circulatingSupply
+        this.totalSupply = totalSupply
+        this.maxSupply = maxSupply
+        this.dateAdded = dateAdded
+        this.numMarketPairs = numMarketPairs
+        this.cmcRank = cmcRank
+        this.lastUpdated = lastUpdated
+        this.quote = quote
+    }
 
     var id: Int? = null
 
@@ -14,7 +28,7 @@ class Coin {
 
     var totalSupply: Int? = null
 
-    var maxSupply: Any? = null
+    var maxSupply: Int? = null
 
     var dateAdded: String? = null
 
