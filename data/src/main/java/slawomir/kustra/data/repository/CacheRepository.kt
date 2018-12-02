@@ -9,7 +9,7 @@ interface CacheRepository {
 
     fun clearCash(): Completable
 
-    fun saveCoinsInCash(): Completable
+    fun saveCoinsInCash(coins: List<CoinEntity>): Completable
 
     fun getCoins(): Observable<List<CoinEntity>>
 

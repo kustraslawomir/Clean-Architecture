@@ -6,12 +6,14 @@ import slawomir.kustra.data.entity.listing.CoinEntity
 
 interface DataSource {
 
-    fun getCoins() : Observable<List<CoinEntity>>
+    fun getCoins(): Observable<List<CoinEntity>>
 
-    fun saveCoins(coins : List<CoinEntity>) : Completable
+    fun saveCoins(coins: List<CoinEntity>): Completable
 
-    fun getObservedCoins() : List<CoinEntity>
+    fun getObservedCoins():  Observable<List<CoinEntity>>
 
-    fun observeCoin(id : Int) : Completable
+    fun observeCoin(id: Int): Completable
+
+    fun stopObservingCoin(id: Int): Completable
 
 }
