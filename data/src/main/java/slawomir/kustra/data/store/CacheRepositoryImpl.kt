@@ -4,9 +4,9 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import slawomir.kustra.data.entity.listing.CoinEntity
 import slawomir.kustra.data.repository.CacheRepository
-import slawomir.kustra.data.repository.DataSource
+import slawomir.kustra.data.repository.DataSourceRepository
 
-class CacheRepositoryImpl(private val cacheRepository: CacheRepository) : DataSource {
+class CacheRepositoryImpl(private val cacheRepository: CacheRepository) : DataSourceRepository {
 
     override fun getCoins(): Observable<List<CoinEntity>> = cacheRepository.getCoins()
 

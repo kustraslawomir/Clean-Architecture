@@ -8,7 +8,7 @@ import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import slawomir.kustra.domain.executor.PostExecutionThread
 import slawomir.kustra.domain.model.listing.Coin
-import slawomir.kustra.domain.repository.Repository
+import slawomir.kustra.domain.repository.DomainRepository
 import slawomir.kustra.domain.test.DataFactory
 
 
@@ -16,7 +16,7 @@ class GetObservedCurrenciesUseCaseTest {
 
     private lateinit var getObservedCurrenciesUseCase: GetObservedCurrenciesUseCase
     @Mock
-    private lateinit var repository: Repository
+    private lateinit var repository: DomainRepository
     @Mock
     private lateinit var postExecutionThread: PostExecutionThread
 
@@ -42,6 +42,6 @@ class GetObservedCurrenciesUseCaseTest {
     }
 
     private fun stubCoinsList(observable: Observable<List<Coin>>) {
-        whenever(repository.getObservedCurrencies()).thenReturn(observable)
+        whenever(repository.getObservedCoins()).thenReturn(observable)
     }
 }

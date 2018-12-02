@@ -4,7 +4,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import slawomir.kustra.data.entity.listing.CoinEntity
 
-interface DataSource {
+interface DataSourceRepository {
 
     fun getCoins(): Observable<List<CoinEntity>>
 

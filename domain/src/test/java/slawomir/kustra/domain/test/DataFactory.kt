@@ -1,9 +1,6 @@
 package slawomir.kustra.domain.test
 
 import slawomir.kustra.domain.model.listing.Coin
-import slawomir.kustra.domain.model.listing.CryptoListingResponse
-import slawomir.kustra.domain.model.listing.Quote
-import slawomir.kustra.domain.model.listing.UsdValue
 import java.util.*
 
 object DataFactory {

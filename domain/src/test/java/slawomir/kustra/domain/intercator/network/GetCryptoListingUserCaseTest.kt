@@ -7,15 +7,14 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import slawomir.kustra.domain.executor.PostExecutionThread
-import slawomir.kustra.domain.model.listing.CryptoListingResponse
-import slawomir.kustra.domain.repository.Repository
+import slawomir.kustra.domain.repository.DomainRepository
 import slawomir.kustra.domain.test.DataFactory
 
 class GetCryptoListingUserCaseTest {
 
     private lateinit var getCryptoListingUserCase: GetCryptoListingUserCase
     @Mock
-    lateinit var repository: Repository
+    lateinit var repository: DomainRepository
     @Mock
     lateinit var postExecutionThread: PostExecutionThread
 
@@ -41,7 +40,7 @@ class GetCryptoListingUserCaseTest {
     }
     
     private fun stubGetCryptoListingUseCase(observable: Observable<CryptoListingResponse>) {
-        whenever(repository.getCryptoCurrencyListing()).thenReturn(observable)
+        whenever(repository.getCoins()).thenReturn(observable)
     }
 
 }

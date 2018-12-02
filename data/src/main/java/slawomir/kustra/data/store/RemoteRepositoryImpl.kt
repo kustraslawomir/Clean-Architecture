@@ -3,10 +3,10 @@ package slawomir.kustra.data.store
 import io.reactivex.Completable
 import io.reactivex.Observable
 import slawomir.kustra.data.entity.listing.CoinEntity
-import slawomir.kustra.data.repository.DataSource
+import slawomir.kustra.data.repository.DataSourceRepository
 import slawomir.kustra.data.repository.RemoteRepository
 
-class RemoteRepositoryImpl(private val remoteRepository: RemoteRepository) : DataSource {
+class RemoteRepositoryImpl(private val remoteRepository: RemoteRepository) : DataSourceRepository {
 
     override fun getCoins(): Observable<List<CoinEntity>> {
         return remoteRepository.getCoinsListing().map {
