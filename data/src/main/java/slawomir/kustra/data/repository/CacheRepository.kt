@@ -7,7 +7,7 @@ import slawomir.kustra.data.entity.listing.CoinEntity
 
 interface CacheRepository {
 
-    fun clearCash(): Completable
+    fun clearCoinsCache(): Completable
 
     fun saveCoinsInCash(coins: List<CoinEntity>): Completable
 
@@ -21,7 +21,7 @@ interface CacheRepository {
 
     fun areCoinsCached() : Single<Boolean>
 
-    fun setCachceTime(timestamp: Long) : Completable
+    fun setLastCacheTime(timestamp: Long) : Completable
 
     fun isCacheExpired() : Single<Boolean>
 }
