@@ -22,4 +22,6 @@ interface CacheRepository {
     fun areCoinsCached() : Single<Boolean>
 
     fun setCachceTime(timestamp: Long) : Completable
+
+    fun isCacheExpired() : Single<Boolean>
 }
