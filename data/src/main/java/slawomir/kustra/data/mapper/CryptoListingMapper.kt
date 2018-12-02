@@ -22,7 +22,7 @@ class CryptoListingMapper : EntityMapper<CryptoListingEntity, CryptoListingRespo
         return coinsEntities
     }
 
-    private fun mapCoin(coin: Coin) = CoinEntity(coin.id, coin.name, coin.symbol, coin.totalSupply, mapQuote(coin.quote))
+    private fun mapCoin(coin: Coin) = CoinEntity(false, coin.id, coin.name, coin.symbol, coin.totalSupply, mapQuote(coin.quote))
 
     private fun mapQuote(quote: Quote?) = QuoteEntity(mapUsdValue(quote?.usd))
 
