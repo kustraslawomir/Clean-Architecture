@@ -6,7 +6,7 @@ import slawomir.kustra.data.entity.listing.CoinEntity
 import slawomir.kustra.data.repository.CacheRepository
 import slawomir.kustra.data.repository.DataSource
 
-class CaheRepositoryImpl(private val cacheRepository: CacheRepository) : DataSource {
+class CacheRepositoryImpl(private val cacheRepository: CacheRepository) : DataSource {
 
     override fun getCoins(): Observable<List<CoinEntity>> = cacheRepository.getCoins()
 
