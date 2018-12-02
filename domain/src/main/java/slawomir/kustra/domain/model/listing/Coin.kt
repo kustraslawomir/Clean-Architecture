@@ -1,6 +1,6 @@
 package slawomir.kustra.domain.model.listing
 
-class Coin {
+open class Coin {
     constructor(id: Int?, name: String?, symbol: String?, slug: String?, circulatingSupply: Double?, totalSupply: Int?, maxSupply: Int?, dateAdded: String?, numMarketPairs: Int?, cmcRank: Int?, lastUpdated: String?, quote: Quote?) {
         this.id = id
         this.name = name

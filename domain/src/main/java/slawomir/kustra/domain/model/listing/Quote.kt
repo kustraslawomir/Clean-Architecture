@@ -1,7 +1,7 @@
 package slawomir.kustra.domain.model.listing
 
 
-class Quote {
+open class Quote {
 
     constructor(usd: UsdValue?) {
         this.usd = usd

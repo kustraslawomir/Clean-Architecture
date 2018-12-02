@@ -1,7 +1,7 @@
 package slawomir.kustra.domain.model.listing
 
 
-class UsdValue {
+open class UsdValue {
 
     constructor(price: Double?, volume24h: Double?, percentChange1h: Double?, percentChange24h: Double?, percentChange7d: Double?, marketCap: Double?, lastUpdated: String?) {
         this.price = price

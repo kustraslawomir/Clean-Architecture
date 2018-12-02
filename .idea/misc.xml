@@ -15,6 +15,7 @@
     <option name="modulesWithSuppressedNotConfigured">
       <set>
         <option value="Domain" />
+        <option value="data" />
         <option value="domain" />
       </set>
     </option>
