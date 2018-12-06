@@ -47,5 +47,4 @@ class Datum {
     @SerializedName("quote")
     @Expose
     var quote: Quote? = null
-
 }
