@@ -17,4 +17,5 @@ class CacheCoin(
         var percentChange24h: Double,
         var percentChange7d: Double,
         var marketCap: Double,
-        var lastUpdated: String) 
+        var lastUpdated: String,
+        var isObserved: Boolean)
