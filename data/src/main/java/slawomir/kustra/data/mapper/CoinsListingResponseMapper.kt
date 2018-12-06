@@ -21,11 +21,11 @@ class CoinsListingResponseMapper : EntityMapper<List<CoinEntity>, List<Coin>> {
     private fun mapCoin(coin: CoinEntity) = Coin(coin.id,
             coin.name,
             coin.symbol,
-            coin.quote?.usd?.price,
-            coin.quote?.usd?.volume24h,
-            coin.quote?.usd?.percentChange1h,
-            coin.quote?.usd?.percentChange24h,
-            coin.quote?.usd?.percentChange7d,
-            coin.quote?.usd?.marketCap,
-            coin.quote?.usd?.lastUpdated)
+            coin.price,
+            coin.volume24h,
+            coin.percentChange1h,
+            coin.percentChange24h,
+            coin.percentChange7d,
+            coin.marketCap,
+            coin.lastUpdated)
 }
