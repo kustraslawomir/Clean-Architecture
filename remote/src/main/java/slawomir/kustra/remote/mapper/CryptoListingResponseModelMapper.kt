@@ -5,9 +5,7 @@ import slawomir.kustra.remote.model.CryptoListingsResponse
 
 class CryptoListingResponseModelMapper : ModelMapper<CryptoListingsResponse, List<CoinEntity>> {
 
-
     override fun mapFromModel(model: CryptoListingsResponse): List<CoinEntity> = mapData(model)
-
 
     private fun mapData(model: CryptoListingsResponse?): List<CoinEntity> {
         val coinsEntities = mutableListOf<CoinEntity>()
