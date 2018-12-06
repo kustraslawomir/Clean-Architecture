@@ -1,8 +1,10 @@
 package slawomir.kustra.cache.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import slawomir.kustra.cache.Constants.COINS_TABLE_NAME
+import slawomir.kustra.cache.Constants.IS_OBSERVED_COLUMN
 
 
 @Entity(tableName = COINS_TABLE_NAME)
@@ -18,4 +20,5 @@ class CacheCoin(
         var percentChange7d: Double,
         var marketCap: Double,
         var lastUpdated: String,
+        @ColumnInfo(name = IS_OBSERVED_COLUMN)
         var isObserved: Boolean)
