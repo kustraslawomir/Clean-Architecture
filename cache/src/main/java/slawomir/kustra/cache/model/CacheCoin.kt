@@ -3,12 +3,12 @@ package slawomir.kustra.cache.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import slawomir.kustra.cache.Constants.COINS_TABLE_NAME
+import slawomir.kustra.cache.Constants.COINS_TABLE
 import slawomir.kustra.cache.Constants.COIN_ID
 import slawomir.kustra.cache.Constants.IS_OBSERVED_COLUMN
 
 
-@Entity(tableName = COINS_TABLE_NAME)
+@Entity(tableName = COINS_TABLE)
 class CacheCoin(
         @PrimaryKey
         @ColumnInfo(name = COIN_ID)

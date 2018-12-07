@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import slawomir.kustra.cache.Constants.COINS_DATABASE_NAME
 import slawomir.kustra.cache.model.CacheCoin
+import slawomir.kustra.cache.model.CacheConfig
 
 
-@Database(entities = [CacheCoin::class], version = 1)
+@Database(entities = [CacheCoin::class, CacheConfig::class], version = 1)
 abstract class CacheDatabase : RoomDatabase() {
 
     companion object {
