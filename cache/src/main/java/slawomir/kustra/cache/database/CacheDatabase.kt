@@ -5,12 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import slawomir.kustra.cache.Constants.COINS_DATABASE_NAME
+import slawomir.kustra.cache.dao.CacheConfigDao
+import slawomir.kustra.cache.dao.CoinsDao
 import slawomir.kustra.cache.model.CacheCoin
 import slawomir.kustra.cache.model.CacheConfig
 
 
 @Database(entities = [CacheCoin::class, CacheConfig::class], version = 1)
 abstract class CacheDatabase : RoomDatabase() {
+
+    abstract fun coinsDao(): CoinsDao
+
+    abstract fun cacheConfigDao() : CacheConfigDao
 
     companion object {
         private var database: CacheDatabase? = null
