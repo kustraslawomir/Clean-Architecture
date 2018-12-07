@@ -27,5 +27,6 @@ class CoinsListingResponseMapper : EntityMapper<List<CoinEntity>, List<Coin>> {
             coin.percentChange24h,
             coin.percentChange7d,
             coin.marketCap,
-            coin.lastUpdated)
+            coin.lastUpdated,
+            coin.isObserved)
 }
