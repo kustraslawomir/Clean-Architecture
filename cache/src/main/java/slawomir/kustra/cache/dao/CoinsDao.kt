@@ -23,7 +23,7 @@ abstract class CoinsDao {
     abstract fun clearCache()
 
     @Query("SELECT * FROM $COINS_TABLE WHERE $IS_OBSERVED_COLUMN = 1")
-    abstract fun getObsercedCoins(): Flowable<List<CacheCoin>>
+    abstract fun getObservedCoins(): Flowable<List<CacheCoin>>
 
     @Query("UPDATE $COINS_TABLE SET $IS_OBSERVED_COLUMN = :isObserved WHERE $COIN_ID = :coinId")
     abstract fun changeObserveCoinState(isObserved: Boolean, coinId: Int)
