@@ -24,7 +24,7 @@ class BrowseObservedCoinsViewModel(private val getObservedCoinsUseCase: GetObser
 
     fun fetchCoins() {
         coinData.postValue(Resource(DataState.LOADING, null, null))
-        return getObservedCoinsUseCase.fetch()
+        return getObservedCoinsUseCase.fetch(ObservedCoinsObservable())
     }
 
     inner class ObservedCoinsObservable : DisposableObserver<List<Coin>>() {

@@ -19,7 +19,7 @@ abstract class CoinsDao {
     @Insert(onConflict = REPLACE)
     abstract fun insertCoins(coins: List<CacheCoin>)
 
-    @Query("DELETE * FROM $COINS_TABLE")
+    @Query("DELETE FROM $COINS_TABLE")
     abstract fun clearCache()
 
     @Query("SELECT * FROM $COINS_TABLE WHERE $IS_OBSERVED_COLUMN = 1")

@@ -65,7 +65,7 @@ dependencies {
 
     compile presentationDependencies.kotlin
     compile presentationDependencies.javaxInject
-    compile presentationDependencies.rxKotlin
+    compile presentationDependencies.rxJava
     compile presentationDependencies.archRuntime
     compile presentationDependencies.archExtensions
     kapt presentationDependencies.archCompiler

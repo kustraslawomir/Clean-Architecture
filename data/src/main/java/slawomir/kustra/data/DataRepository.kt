@@ -18,8 +18,8 @@ class DataRepository constructor(private val coinsListingMapper: CoinsListingRes
         return Observable.zip(
                 cacheRepository.areCoinsCached().toObservable(),
                 cacheRepository.isCacheExpired().toObservable(),
-                BiFunction<Boolean, Boolean, Pair<Boolean, Boolean>> { cached, exparied ->
-                    Pair(cached, exparied)
+                BiFunction<Boolean, Boolean, Pair<Boolean, Boolean>> { cached, expired ->
+                    Pair(cached, expired)
                 }).flatMap {
             dataSourceFactory.getCoinsList(it.first, it.second).getCoins()
                     .flatMap { coinsList ->

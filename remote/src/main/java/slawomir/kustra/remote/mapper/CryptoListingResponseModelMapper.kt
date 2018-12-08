@@ -17,14 +17,15 @@ class CryptoListingResponseModelMapper : ModelMapper<CryptoListingsResponse, Lis
     }
 
     private fun mapCoin(coin: slawomir.kustra.remote.model.Coin) = CoinEntity(coin.id,
-            coin.name,
-            coin.symbol,
-            coin.quote?.usd?.price,
-            coin.quote?.usd?.volume24h,
-            coin.quote?.usd?.percentChange1h,
-            coin.quote?.usd?.percentChange24h,
-            coin.quote?.usd?.percentChange7d,
-            coin.quote?.usd?.marketCap,
-            coin.quote?.usd?.lastUpdated)
+            coin.name ?: "",
+            coin.symbol ?: "",
+            coin.quote?.usd?.price ?: 0.0,
+            coin.quote?.usd?.volume24h ?: 0.0,
+            coin.quote?.usd?.percentChange1h ?: 0.0,
+            coin.quote?.usd?.percentChange24h ?: 0.0,
+            coin.quote?.usd?.percentChange7d ?: 0.0,
+            coin.quote?.usd?.marketCap ?: 0.0,
+            coin.quote?.usd?.lastUpdated ?: "",
+            false)
 
 }

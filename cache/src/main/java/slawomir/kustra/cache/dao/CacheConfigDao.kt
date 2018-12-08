@@ -18,6 +18,6 @@ abstract class CacheConfigDao() {
     abstract fun insertCacheConfig(config: CacheConfig
     )
 
-    @Query("DELETE * FROM $CACHE_CONFIG_TABLE")
+    @Query("DELETE FROM $CACHE_CONFIG_TABLE")
     abstract fun clearCache()
 }

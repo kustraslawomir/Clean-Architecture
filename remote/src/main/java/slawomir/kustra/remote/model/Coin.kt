@@ -7,7 +7,7 @@ class Coin {
 
     @SerializedName("id")
     @Expose
-    var id: Int? = null
+    var id: Int = 0
     @SerializedName("name")
     @Expose
     var name: String? = null

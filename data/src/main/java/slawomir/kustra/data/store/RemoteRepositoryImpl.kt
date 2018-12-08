@@ -9,9 +9,7 @@ import slawomir.kustra.data.repository.RemoteRepository
 class RemoteRepositoryImpl(private val remoteRepository: RemoteRepository) : DataSourceRepository {
 
     override fun getCoins(): Observable<List<CoinEntity>> {
-        return remoteRepository.getCoinsListing().map {
-            it.data
-        }
+        return remoteRepository.getCoinsListing()
     }
 
     override fun saveCoins(coins: List<CoinEntity>): Completable {
