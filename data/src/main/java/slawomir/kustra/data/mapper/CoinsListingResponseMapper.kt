@@ -2,8 +2,9 @@ package slawomir.kustra.data.mapper
 
 import slawomir.kustra.data.entity.listing.CoinEntity
 import slawomir.kustra.domain.model.listing.Coin
+import javax.inject.Inject
 
-class CoinsListingResponseMapper : EntityMapper<List<CoinEntity>, List<Coin>> {
+class CoinsListingResponseMapper  @Inject internal constructor() : EntityMapper<List<CoinEntity>, List<Coin>> {
 
     override fun mapFromEntity(entity: List<CoinEntity>): List<Coin> {
         return mapData(entity)

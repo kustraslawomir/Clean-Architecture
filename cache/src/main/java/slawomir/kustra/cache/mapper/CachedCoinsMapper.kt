@@ -2,8 +2,9 @@ package slawomir.kustra.cache.mapper
 
 import slawomir.kustra.cache.model.CacheCoin
 import slawomir.kustra.data.entity.listing.CoinEntity
+import javax.inject.Inject
 
-class CachedCoinsMapper : CacheMap<CacheCoin, CoinEntity> {
+class CachedCoinsMapper  @Inject internal constructor() : CacheMap<CacheCoin, CoinEntity> {
 
     override fun mapFromCached(type: CacheCoin): CoinEntity =
             CoinEntity(type.id, type.name, type.symbol, type.price, type.volume24h, type.percentChange1h,

@@ -2,8 +2,9 @@ package slawomir.kustra.remote.mapper
 
 import slawomir.kustra.data.entity.listing.CoinEntity
 import slawomir.kustra.remote.model.CryptoListingsResponse
+import javax.inject.Inject
 
-class CryptoListingResponseModelMapper : ModelMapper<CryptoListingsResponse, List<CoinEntity>> {
+class CryptoListingResponseModelMapper @Inject internal constructor(): ModelMapper<CryptoListingsResponse, List<CoinEntity>> {
 
     override fun mapFromModel(model: CryptoListingsResponse): List<CoinEntity> = mapData(model)
 

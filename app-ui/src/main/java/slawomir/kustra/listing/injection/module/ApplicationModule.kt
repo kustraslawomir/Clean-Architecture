@@ -1,6 +1,7 @@
 package slawomir.kustra.listing.injection.module
 
 import android.app.Application
+import android.content.Context
 import dagger.Binds
 import dagger.Module
 
@@ -8,5 +9,5 @@ import dagger.Module
 abstract class ApplicationModule {
 
     @Binds
-    abstract fun bindContext(application: Application): Application
+    abstract fun bindContext(application: Application): Context
 }

@@ -11,7 +11,7 @@ import slawomir.kustra.cache.model.CacheCoin
 import slawomir.kustra.cache.model.CacheConfig
 
 
-@Database(entities = [CacheCoin::class, CacheConfig::class], version = 1)
+@Database(entities = [CacheCoin::class, CacheConfig::class], version = 1, exportSchema = false)
 abstract class CacheDatabase : RoomDatabase() {
 
     abstract fun coinsDao(): CoinsDao

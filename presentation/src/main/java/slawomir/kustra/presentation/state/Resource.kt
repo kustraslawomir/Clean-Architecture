@@ -1,5 +1,5 @@
 package slawomir.kustra.presentation.state
 
-class Resource<out T>(private val state: DataState,
-                      private val data : T?,
-                      private val message : String?)
+class Resource<out T>(val state: DataState,
+                      val data : T?,
+                      val message : String?)

@@ -1,5 +1,7 @@
 package slawomir.kustra.listing.injection.module
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -13,8 +15,8 @@ abstract class PresentationModule {
     @Binds
     @IntoMap
     @ViewModelKey(CoinsListingViewModel::class)
-    abstract fun bindCoinsListingViewmModel(viewModel: CoinsListingViewModel): CoinsListingViewModel
+    abstract fun bindCoinsListingViewmModel(viewModel: CoinsListingViewModel): ViewModel
 
     @Binds
-    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelFactory
+    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 }

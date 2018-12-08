@@ -5,8 +5,9 @@ import io.reactivex.Observable
 import slawomir.kustra.data.entity.listing.CoinEntity
 import slawomir.kustra.data.repository.DataSourceRepository
 import slawomir.kustra.data.repository.RemoteRepository
+import javax.inject.Inject
 
-class RemoteRepositoryImpl(private val remoteRepository: RemoteRepository) : DataSourceRepository {
+class RemoteRepositoryImpl @Inject internal constructor(private val remoteRepository: RemoteRepository) : DataSourceRepository {
 
     override fun getCoins(): Observable<List<CoinEntity>> {
         return remoteRepository.getCoinsListing()

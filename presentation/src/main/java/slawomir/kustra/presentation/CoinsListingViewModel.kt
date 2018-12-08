@@ -8,15 +8,16 @@ import slawomir.kustra.domain.intercator.network.GetCryptoListingUserCase
 import slawomir.kustra.domain.intercator.storage.ObserveCurrencyUseCase
 import slawomir.kustra.domain.intercator.storage.StopObservingCurrencyUseCase
 import slawomir.kustra.domain.model.listing.Coin
-import slawomir.kustra.presentation.mapper.ViewCoinMapper
+import slawomir.kustra.presentation.mapper.ViewMapper
 import slawomir.kustra.presentation.model.PresentationCoin
 import slawomir.kustra.presentation.state.DataState
 import slawomir.kustra.presentation.state.Resource
+import javax.inject.Inject
 
-class CoinsListingViewModel(private val getCryptoListingUserCase: GetCryptoListingUserCase,
-                            private val observeCurrencyUseCase: ObserveCurrencyUseCase,
-                            private val stopObservingCurrencyUseCase: StopObservingCurrencyUseCase,
-                            private val viewCoinMapper: ViewCoinMapper<Coin, PresentationCoin>) : ViewModel() {
+class CoinsListingViewModel @Inject internal constructor(private val getCryptoListingUserCase: GetCryptoListingUserCase,
+                                                         private val observeCurrencyUseCase: ObserveCurrencyUseCase,
+                                                         private val stopObservingCurrencyUseCase: StopObservingCurrencyUseCase,
+                                                         private val viewCoinMapper: ViewMapper) : ViewModel() {
 
     private val coinsData: MutableLiveData<Resource<List<PresentationCoin>>> = MutableLiveData()
 

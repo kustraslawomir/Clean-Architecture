@@ -8,10 +8,11 @@ import slawomir.kustra.data.repository.CacheRepository
 import slawomir.kustra.data.store.DataSourceFactory
 import slawomir.kustra.domain.model.listing.Coin
 import slawomir.kustra.domain.repository.DomainRepository
+import javax.inject.Inject
 
-class DataRepository constructor(private val coinsListingMapper: CoinsListingResponseMapper,
-                                 private val dataSourceFactory: DataSourceFactory,
-                                 private val cacheRepository: CacheRepository) : DomainRepository {
+class DataRepository  @Inject internal constructor(private val coinsListingMapper: CoinsListingResponseMapper,
+                                                   private val dataSourceFactory: DataSourceFactory,
+                                                   private val cacheRepository: CacheRepository) : DomainRepository {
 
     override fun getCoins(): Observable<List<Coin>> {
 

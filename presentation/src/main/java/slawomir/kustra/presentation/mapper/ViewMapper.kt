@@ -2,8 +2,9 @@ package slawomir.kustra.presentation.mapper
 
 import slawomir.kustra.domain.model.listing.Coin
 import slawomir.kustra.presentation.model.PresentationCoin
+import javax.inject.Inject
 
-class ViewMapper : ViewCoinMapper<Coin, PresentationCoin> {
+class ViewMapper @Inject constructor()  : ViewCoinMapper<Coin, PresentationCoin> {
 
     override fun mapToViewCoin(type: Coin): PresentationCoin =
             PresentationCoin(type.id, type.name, type.symbol, type.price, type.volume24h, type.percentChange1h,

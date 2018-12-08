@@ -4,8 +4,9 @@ import io.reactivex.Completable
 import slawomir.kustra.domain.executor.PostExecutionThread
 import slawomir.kustra.domain.intercator.CompletableUseCase
 import slawomir.kustra.domain.repository.DomainRepository
+import javax.inject.Inject
 
-class ObserveCurrencyUseCase(postExecutionThread: PostExecutionThread,
+class ObserveCurrencyUseCase @Inject internal constructor(postExecutionThread: PostExecutionThread,
                              private val repository: DomainRepository)
     : CompletableUseCase<ObserveCurrencyUseCase.Params>(postExecutionThread) {
 

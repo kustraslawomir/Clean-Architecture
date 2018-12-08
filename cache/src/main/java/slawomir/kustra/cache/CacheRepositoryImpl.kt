@@ -9,9 +9,10 @@ import slawomir.kustra.cache.mapper.CachedCoinsMapper
 import slawomir.kustra.cache.model.CacheConfig
 import slawomir.kustra.data.entity.listing.CoinEntity
 import slawomir.kustra.data.repository.CacheRepository
+import javax.inject.Inject
 
-open class CacheRepositoryImpl(private val cachedCoinsMapper: CachedCoinsMapper,
-                               private val cacheDatabase: CacheDatabase) : CacheRepository {
+open class CacheRepositoryImpl @Inject internal constructor(private val cachedCoinsMapper: CachedCoinsMapper,
+                                                            private val cacheDatabase: CacheDatabase) : CacheRepository {
 
     override fun clearCoinsCache(): Completable = Completable.defer {
         cacheDatabase.coinsDao().clearCache()

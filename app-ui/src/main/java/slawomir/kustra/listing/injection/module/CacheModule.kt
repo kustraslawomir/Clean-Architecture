@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import slawomir.kustra.cache.CacheRepositoryImpl
 import slawomir.kustra.cache.database.CacheDatabase
+import slawomir.kustra.data.repository.CacheRepository
 
 @Module
 abstract class CacheModule {
@@ -18,5 +19,5 @@ abstract class CacheModule {
     }
 
     @Binds
-    abstract fun bindProjectsCache(cacheRepositoryImpl: CacheRepositoryImpl) : CacheRepositoryImpl
+    abstract fun bindProjectsCache(cacheRepositoryImpl: CacheRepositoryImpl) : CacheRepository
 }
