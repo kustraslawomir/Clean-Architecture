@@ -12,7 +12,7 @@ abstract class CompletableUseCase<in Params> constructor(private val postExecuti
 
     protected abstract fun getCompletableUseCase(params: Params? = null) : Completable
 
-    open fun run(observer : DisposableCompletableObserver, params: Params?=null){
+    open fun post(observer : DisposableCompletableObserver, params: Params?=null){
         compositeDisposable.add(getCompletableUseCase(params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(postExecutionThread.scheduler)

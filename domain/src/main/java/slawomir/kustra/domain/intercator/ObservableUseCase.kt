@@ -12,7 +12,7 @@ abstract class ObservableUseCase<T, in Params> constructor(private val postExecu
 
     protected abstract fun getObservableUseCase(params: Params? = null) : Observable<T>
 
-    open fun run(observer : DisposableObserver<T>, params: Params?=null){
+    open fun fetch(observer : DisposableObserver<T>, params: Params?=null){
         compositeDisposable.add(getObservableUseCase(params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(postExecutionThread.scheduler)
