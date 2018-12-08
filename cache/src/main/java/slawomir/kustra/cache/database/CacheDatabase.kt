@@ -21,7 +21,7 @@ abstract class CacheDatabase : RoomDatabase() {
     companion object {
         private var database: CacheDatabase? = null
 
-        internal fun getDatabase(context: Context): CacheDatabase {
+        fun getDatabase(context: Context): CacheDatabase {
             if (database == null)
                 database = Room.databaseBuilder(context.applicationContext, CacheDatabase::class.java, COINS_DATABASE_NAME)
                         .build()

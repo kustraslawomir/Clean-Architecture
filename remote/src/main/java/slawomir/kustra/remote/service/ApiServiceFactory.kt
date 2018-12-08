@@ -5,9 +5,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
-class ApiServiceFactory {
+object ApiServiceFactory {
 
-    private fun makeApiService(): ApiService {
+    fun makeApiService(): ApiService {
         val okHttpClient = getOkHttpClient(getHttpLoggingInterceptor())
         return getRetrofitService(okHttpClient)
     }

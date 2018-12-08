@@ -13,10 +13,10 @@ import slawomir.kustra.presentation.model.PresentationCoin
 import slawomir.kustra.presentation.state.DataState
 import slawomir.kustra.presentation.state.Resource
 
-class BrowseCoinsViewModel(private val getCryptoListingUserCase: GetCryptoListingUserCase,
-                           private val observeCurrencyUseCase: ObserveCurrencyUseCase,
-                           private val stopObservingCurrencyUseCase: StopObservingCurrencyUseCase,
-                           private val viewCoinMapper: ViewCoinMapper<Coin, PresentationCoin>) : ViewModel() {
+class CoinsListingViewModel(private val getCryptoListingUserCase: GetCryptoListingUserCase,
+                            private val observeCurrencyUseCase: ObserveCurrencyUseCase,
+                            private val stopObservingCurrencyUseCase: StopObservingCurrencyUseCase,
+                            private val viewCoinMapper: ViewCoinMapper<Coin, PresentationCoin>) : ViewModel() {
 
     private val coinsData: MutableLiveData<Resource<List<PresentationCoin>>> = MutableLiveData()
 
