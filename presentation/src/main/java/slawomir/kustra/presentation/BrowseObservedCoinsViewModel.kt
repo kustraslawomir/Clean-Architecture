@@ -6,14 +6,14 @@ import io.reactivex.observers.DisposableObserver
 import slawomir.kustra.domain.intercator.storage.GetObservedCoinsUseCase
 import slawomir.kustra.domain.model.listing.Coin
 import slawomir.kustra.presentation.mapper.ViewCoinMapper
-import slawomir.kustra.presentation.model.CoinPresentation
+import slawomir.kustra.presentation.model.PresentationCoin
 import slawomir.kustra.presentation.state.DataState
 import slawomir.kustra.presentation.state.Resource
 
 class BrowseObservedCoinsViewModel(private val getObservedCoinsUseCase: GetObservedCoinsUseCase,
-                                   private val viewCoinMapper: ViewCoinMapper<Coin, CoinPresentation>) : ViewModel() {
+                                   private val viewCoinMapper: ViewCoinMapper<Coin, PresentationCoin>) : ViewModel() {
 
-    private val coinData: MutableLiveData<Resource<List<CoinPresentation>>> = MutableLiveData()
+    private val coinData: MutableLiveData<Resource<List<PresentationCoin>>> = MutableLiveData()
 
     private fun getCoins() = coinData
 

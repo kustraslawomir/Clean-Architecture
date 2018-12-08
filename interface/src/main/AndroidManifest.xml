@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="slawomir.kustra.aninterface">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name="slawomir.kustra.ui.CoinApplication"
         android:allowBackup="true"
@@ -9,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="slawomir.kustra.ui.MainActivity">
+        <activity android:name="slawomir.kustra.ui.CoinsActivity">
           <intent-filter >
               <category android:name="android.intent.category.LAUNCHER" />
               <category android:name="android.intent.category.DEFAULT" />

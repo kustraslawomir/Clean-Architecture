@@ -9,23 +9,23 @@ import slawomir.kustra.domain.intercator.storage.ObserveCurrencyUseCase
 import slawomir.kustra.domain.intercator.storage.StopObservingCurrencyUseCase
 import slawomir.kustra.domain.model.listing.Coin
 import slawomir.kustra.presentation.mapper.ViewCoinMapper
-import slawomir.kustra.presentation.model.CoinPresentation
+import slawomir.kustra.presentation.model.PresentationCoin
 import slawomir.kustra.presentation.state.DataState
 import slawomir.kustra.presentation.state.Resource
 
 class BrowseCoinsViewModel(private val getCryptoListingUserCase: GetCryptoListingUserCase,
                            private val observeCurrencyUseCase: ObserveCurrencyUseCase,
                            private val stopObservingCurrencyUseCase: StopObservingCurrencyUseCase,
-                           private val viewCoinMapper: ViewCoinMapper<Coin, CoinPresentation>) : ViewModel() {
+                           private val viewCoinMapper: ViewCoinMapper<Coin, PresentationCoin>) : ViewModel() {
 
-    private val coinsData: MutableLiveData<Resource<List<CoinPresentation>>> = MutableLiveData()
+    private val coinsData: MutableLiveData<Resource<List<PresentationCoin>>> = MutableLiveData()
 
     override fun onCleared() {
         getCryptoListingUserCase.dispose()
         super.onCleared()
     }
 
-    fun getCoins(): MutableLiveData<Resource<List<CoinPresentation>>> = coinsData
+    fun getCoins(): MutableLiveData<Resource<List<PresentationCoin>>> = coinsData
 
     fun fetchCoins() {
         coinsData.postValue(Resource(DataState.LOADING, null, null))
