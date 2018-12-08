@@ -1,4 +1,4 @@
-package slawomir.kustra.aninterface;
+package slawomir.kustra.ui;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

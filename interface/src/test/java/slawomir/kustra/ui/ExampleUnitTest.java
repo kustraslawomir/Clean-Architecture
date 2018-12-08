@@ -1,4 +1,4 @@
-package slawomir.kustra.aninterface;
+package slawomir.kustra.ui;
 
 import org.junit.Test;
 
