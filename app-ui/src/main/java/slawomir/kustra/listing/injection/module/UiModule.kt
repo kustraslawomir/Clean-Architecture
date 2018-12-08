@@ -4,7 +4,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import slawomir.kustra.domain.executor.PostExecutionThread
-import slawomir.kustra.listing.CoinsListingActivity
+import slawomir.kustra.listing.activity.CoinsListingActivity
 import slawomir.kustra.listing.scheduler.AndroidUiThread
 
 @Module
