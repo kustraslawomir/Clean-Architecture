@@ -6,8 +6,8 @@ import slawomir.kustra.domain.intercator.ObservableUseCase
 import slawomir.kustra.domain.model.listing.Coin
 import slawomir.kustra.domain.repository.DomainRepository
 
-class GetObservedCurrenciesUseCase(private val repository: DomainRepository,
-                                   postExecutionThread: PostExecutionThread)
+class GetObservedCoinsUseCase(private val repository: DomainRepository,
+                              postExecutionThread: PostExecutionThread)
     : ObservableUseCase<List<Coin>, Nothing>(postExecutionThread) {
 
     public override fun getObservableUseCase(params: Nothing?): Observable<List<Coin>> = repository.getObservedCoins()

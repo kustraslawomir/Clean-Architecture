@@ -14,7 +14,7 @@ import slawomir.kustra.domain.test.DataFactory
 
 class GetObservedCurrenciesUseCaseTest {
 
-    private lateinit var getObservedCurrenciesUseCase: GetObservedCurrenciesUseCase
+    private lateinit var getObservedCurrenciesUseCase: GetObservedCoinsUseCase
     @Mock
     private lateinit var repository: DomainRepository
     @Mock
@@ -23,7 +23,7 @@ class GetObservedCurrenciesUseCaseTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        getObservedCurrenciesUseCase = GetObservedCurrenciesUseCase(repository, postExecutionThread)
+        getObservedCurrenciesUseCase = GetObservedCoinsUseCase(repository, postExecutionThread)
     }
 
     @Test
