@@ -8,5 +8,5 @@ object Constants {
     const val COINS_DATABASE_NAME = "coins.db"
     const val CACHE_CONFIG_TABLE = "cache_config_name"
 
-    const val CACHCE_EXPIRATION_VALUE = 600000 // 10minutes
+    const val CACHE_EXPIRATION_VALUE = 600000 // 10minutes
 }
