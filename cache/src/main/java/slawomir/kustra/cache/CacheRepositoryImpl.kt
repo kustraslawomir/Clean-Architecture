@@ -3,7 +3,8 @@ package slawomir.kustra.cache
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
-import slawomir.kustra.cache.Constants.CACHCE_EXPIRATION_VALUE
+import io.reactivex.rxkotlin.toSingle
+import slawomir.kustra.cache.Constants.CACHE_EXPIRATION_VALUE
 import slawomir.kustra.cache.database.CacheDatabase
 import slawomir.kustra.cache.mapper.CachedCoinsMapper
 import slawomir.kustra.cache.model.CacheConfig
@@ -65,9 +66,7 @@ open class CacheRepositoryImpl @Inject internal constructor(private val cachedCo
 
     override fun isCacheExpired(): Single<Boolean> {
         val currentTime = System.currentTimeMillis()
-        return cacheDatabase.cacheConfigDao().getCacheTime().single(CacheConfig(0))
-                .map {
-                    currentTime - it.lastCacheTime > CACHCE_EXPIRATION_VALUE
-                }
+        val cacheTime = cacheDatabase.cacheConfigDao().getCacheTime()
+        return (currentTime - cacheTime.lastCacheTime > CACHE_EXPIRATION_VALUE).toSingle()
     }
 }

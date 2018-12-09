@@ -24,6 +24,7 @@ abstract class CacheDatabase : RoomDatabase() {
         fun getDatabase(context: Context): CacheDatabase {
             if (database == null)
                 database = Room.databaseBuilder(context.applicationContext, CacheDatabase::class.java, COINS_DATABASE_NAME)
+                        .allowMainThreadQueries()
                         .build()
             return database as CacheDatabase
         }

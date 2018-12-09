@@ -33,12 +33,7 @@ class CoinsListingActivity : AppCompatActivity() {
 
         browseViewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(CoinsListingViewModel::class.java)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setCoinsRecycler()
-    }
-
-    private fun setCoinsRecycler() {
-        coinsRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onStart() {
@@ -54,12 +49,13 @@ class CoinsListingActivity : AppCompatActivity() {
         browseViewModel.fetchCoins()
     }
 
-    private fun handleDataState(resource: Resource<List<UiCoin>>) {
-        Timber.e("some data %s %s", resource.data == null, resource.state)
+    private fun setCoinsRecycler() {
+        coinsRecyclerView.layoutManager = LinearLayoutManager(this)
+    }
 
+    private fun handleDataState(resource: Resource<List<UiCoin>>) {
         when (resource.state) {
             ResponseState.SUCCESS -> {
-                Timber.e("coins rain!")
                 progressBar.visibility = View.GONE
                 val coins = resource.data
                 if (coins != null)
