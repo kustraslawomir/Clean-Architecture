@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import slawomir.kustra.presentation.model.UiCoin
 import slawomir.kustra.myapplication.R
+import slawomir.kustra.presentation.model.UiCoin
 import timber.log.Timber
 
 class CoinsAdapter(private var coins: List<UiCoin>) : RecyclerView.Adapter<CoinsAdapter.ViewHolder>() {
@@ -21,12 +21,16 @@ class CoinsAdapter(private var coins: List<UiCoin>) : RecyclerView.Adapter<Coins
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val coin = coins[position]
         holder.coinName.text = coin.name
+        Timber.d("bind coin: %s", coin.name)
     }
 
-    override fun getItemCount() = coins.size
+    override fun getItemCount() : Int {
+        return coins.size
+    }
+
     fun setCoins(coins: List<UiCoin>) {
+        Timber.e("set coins")
         this.coins = coins
-        Timber.e("sie %s", this.coins.size)
         notifyDataSetChanged()
     }
 

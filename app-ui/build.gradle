@@ -54,6 +54,8 @@ dependencies {
     implementation mobileUiDependencies.glide
     implementation mobileUiDependencies.dagger
     implementation mobileUiDependencies.daggerSupport
+    implementation mobileUiDependencies.gson
+    implementation mobileUiDependencies.stetho
 
     compile presentationDependencies.archRuntime
     compile presentationDependencies.archExtensions

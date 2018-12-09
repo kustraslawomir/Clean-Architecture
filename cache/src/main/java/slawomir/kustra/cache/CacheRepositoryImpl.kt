@@ -2,8 +2,6 @@ package slawomir.kustra.cache
 
 import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.Single
-import io.reactivex.rxkotlin.toSingle
 import slawomir.kustra.cache.Constants.CACHE_EXPIRATION_VALUE
 import slawomir.kustra.cache.database.CacheDatabase
 import slawomir.kustra.cache.mapper.CachedCoinsMapper
@@ -54,19 +52,17 @@ open class CacheRepositoryImpl @Inject internal constructor(private val cachedCo
         return Completable.complete()
     }
 
-    override fun areCoinsCached(): Single<Boolean> = cacheDatabase.coinsDao().getCachedCoins().isEmpty
-            .map {
-                !it
-            }
+    override fun areCoinsCached(): Boolean = !cacheDatabase.coinsDao().getCachedCoinsAsList().isEmpty()
 
     override fun setLastCacheTime(timestamp: Long): Completable {
         cacheDatabase.cacheConfigDao().insertCacheConfig(CacheConfig(timestamp))
         return Completable.complete()
     }
 
-    override fun isCacheExpired(): Single<Boolean> {
+    override fun isCacheExpired(): Boolean {
         val currentTime = System.currentTimeMillis()
-        val cacheTime = cacheDatabase.cacheConfigDao().getCacheTime()
-        return (currentTime - cacheTime.lastCacheTime > CACHE_EXPIRATION_VALUE).toSingle()
+        val cacheTime: Long = cacheDatabase.cacheConfigDao().getCacheTime()?.lastCacheTime ?: 0
+
+        return (currentTime - cacheTime > CACHE_EXPIRATION_VALUE)
     }
 }

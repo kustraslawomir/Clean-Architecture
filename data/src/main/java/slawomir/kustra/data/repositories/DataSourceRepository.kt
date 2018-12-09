@@ -16,4 +16,5 @@ interface DataSourceRepository {
 
     fun stopObservingCoin(id: Int): Completable
 
+
 }

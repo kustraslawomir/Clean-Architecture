@@ -11,7 +11,7 @@ import slawomir.kustra.cache.model.CacheConfig
 abstract class CacheConfigDao() {
 
     @Query("SELECT * FROM $CACHE_CONFIG_TABLE")
-    abstract fun getCacheTime(): CacheConfig
+    abstract fun getCacheTime(): CacheConfig?
 
     @Insert(onConflict = REPLACE)
     abstract fun insertCacheConfig(config: CacheConfig

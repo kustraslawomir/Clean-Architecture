@@ -2,7 +2,6 @@ package slawomir.kustra.data.repositories
 
 import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.Single
 import slawomir.kustra.data.model.listing.Coin
 
 interface CacheRepository {
@@ -19,9 +18,9 @@ interface CacheRepository {
 
     fun stopObservingCoin(id: Int): Completable
 
-    fun areCoinsCached() : Single<Boolean>
+    fun areCoinsCached() : Boolean
 
     fun setLastCacheTime(timestamp: Long) : Completable
 
-    fun isCacheExpired() : Single<Boolean>
+    fun isCacheExpired() : Boolean
 }

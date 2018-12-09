@@ -7,14 +7,14 @@ import io.reactivex.observers.DisposableObserver
 import slawomir.kustra.data.model.listing.Coin
 import slawomir.kustra.data.usecase.local.ObserveCurrencyUseCase
 import slawomir.kustra.data.usecase.local.StopObservingCurrencyUseCase
-import slawomir.kustra.data.usecase.remote.GetCryptoListingUserCase
+import slawomir.kustra.data.usecase.remote.GetCryptoListingUseCase
 import slawomir.kustra.presentation.mapper.ViewMapper
 import slawomir.kustra.presentation.model.UiCoin
 import slawomir.kustra.presentation.state.Resource
 import slawomir.kustra.presentation.state.ResponseState
 import javax.inject.Inject
 
-class CoinsListingViewModel @Inject internal constructor(private val getCryptoListingUserCase: GetCryptoListingUserCase,
+class CoinsListingViewModel @Inject internal constructor(private val getCryptoListingUserCase: GetCryptoListingUseCase,
                                                          private val observeCurrencyUseCase: ObserveCurrencyUseCase,
                                                          private val stopObservingCurrencyUseCase: StopObservingCurrencyUseCase,
                                                          private val viewCoinMapper: ViewMapper) : ViewModel() {
@@ -43,7 +43,6 @@ class CoinsListingViewModel @Inject internal constructor(private val getCryptoLi
         return stopObservingCurrencyUseCase.post(StopObserveCoinsSubscriber(), StopObservingCurrencyUseCase.Params(id))
     }
 
-
     inner class CoinsSubscriber : DisposableObserver<List<Coin>>() {
         override fun onNext(value: List<Coin>) {
             uiCoins.postValue(Resource(ResponseState.SUCCESS,
@@ -58,7 +57,6 @@ class CoinsListingViewModel @Inject internal constructor(private val getCryptoLi
 
         override fun onError(e: Throwable) {
             uiCoins.postValue(Resource(ResponseState.ERROR, null, e.message))
-
         }
     }
 

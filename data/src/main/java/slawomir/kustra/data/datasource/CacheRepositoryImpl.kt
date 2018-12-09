@@ -7,12 +7,18 @@ import slawomir.kustra.data.repositories.CacheRepository
 import slawomir.kustra.data.repositories.DataSourceRepository
 import javax.inject.Inject
 
-class  CacheRepositoryImpl @Inject internal constructor(private val cacheRepository: CacheRepository) : DataSourceRepository {
+class CacheRepositoryImpl @Inject internal constructor(private val cacheRepository: CacheRepository) : DataSourceRepository {
 
     override fun getCoins(): Observable<List<Coin>> = cacheRepository.getCoins()
 
-    override fun saveCoins(coins: List<Coin>): Completable = cacheRepository.saveCoinsInCash(coins)
-            .andThen(cacheRepository.setLastCacheTime(System.currentTimeMillis()))
+    override fun saveCoins(coins: List<Coin>): Completable {
+        val cacheList = cacheRepository.getCoins()
+        if (cacheList != coins) {
+            cacheRepository.saveCoinsInCash(coins)
+            cacheRepository.setLastCacheTime(System.currentTimeMillis())
+        }
+        return Completable.complete()
+    }
 
     override fun getObservedCoins(): Observable<List<Coin>> = cacheRepository.getObservedCoins()
 

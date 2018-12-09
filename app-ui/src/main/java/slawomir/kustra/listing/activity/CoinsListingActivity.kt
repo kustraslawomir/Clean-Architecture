@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_coins_listing.*
 import slawomir.kustra.listing.activity.adapter.CoinsAdapter
@@ -51,21 +52,23 @@ class CoinsListingActivity : AppCompatActivity() {
 
     private fun setCoinsRecycler() {
         coinsRecyclerView.layoutManager = LinearLayoutManager(this)
+        coinsRecyclerView.adapter = adapter
     }
 
     private fun handleDataState(resource: Resource<List<UiCoin>>) {
+        Timber.e("data: %s", Gson().toJson(resource))
         when (resource.state) {
             ResponseState.SUCCESS -> {
                 progressBar.visibility = View.GONE
+
                 val coins = resource.data
-                if (coins != null)
+                if(coins!=null)
                     adapter.setCoins(coins)
             }
             ResponseState.LOADING -> {
                 progressBar.visibility = View.VISIBLE
             }
             ResponseState.ERROR -> {
-                Timber.e("error %s", resource.message)
                 progressBar.visibility = View.GONE
 
             }
