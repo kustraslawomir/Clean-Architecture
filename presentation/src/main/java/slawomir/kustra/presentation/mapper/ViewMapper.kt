@@ -1,12 +1,12 @@
 package slawomir.kustra.presentation.mapper
 
-import slawomir.kustra.domain.model.listing.Coin
-import slawomir.kustra.presentation.model.PresentationCoin
+import slawomir.kustra.data.model.listing.Coin
+import slawomir.kustra.presentation.model.UiCoin
 import javax.inject.Inject
 
-class ViewMapper @Inject constructor()  : ViewCoinMapper<Coin, PresentationCoin> {
+class ViewMapper @Inject constructor()  : ViewCoinMapper<Coin, UiCoin> {
 
-    override fun mapToViewCoin(type: Coin): PresentationCoin =
-            PresentationCoin(type.id, type.name, type.symbol, type.price, type.volume24h, type.percentChange1h,
+    override fun mapToViewCoin(type: Coin): UiCoin =
+            UiCoin(type.id, type.name, type.symbol, type.price, type.volume24h, type.percentChange1h,
                     type.percentChange24h, type.percentChange7d, type.marketCap, type.isObserved)
 }

@@ -11,7 +11,6 @@
             <option value="$PROJECT_DIR$/app-ui" />
             <option value="$PROJECT_DIR$/cache" />
             <option value="$PROJECT_DIR$/data" />
-            <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/presentation" />
             <option value="$PROJECT_DIR$/remote" />
             <option value="$PROJECT_DIR$/view" />

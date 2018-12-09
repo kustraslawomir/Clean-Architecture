@@ -8,13 +8,14 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_coins_listing.*
+import slawomir.kustra.listing.activity.adapter.CoinsAdapter
 import slawomir.kustra.listing.injection.factory.ViewModelFactory
-import slawomir.kustra.listing.mapper.UiCoinMapperImpl
 import slawomir.kustra.myapplication.R
 import slawomir.kustra.presentation.CoinsListingViewModel
-import slawomir.kustra.presentation.model.PresentationCoin
-import slawomir.kustra.presentation.state.DataState
+import slawomir.kustra.presentation.model.UiCoin
 import slawomir.kustra.presentation.state.Resource
+import slawomir.kustra.presentation.state.ResponseState
+import timber.log.Timber
 import javax.inject.Inject
 
 class CoinsListingActivity : AppCompatActivity() {
@@ -22,6 +23,7 @@ class CoinsListingActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     lateinit var browseViewModel: CoinsListingViewModel
+    private val adapter = CoinsAdapter(emptyList())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +45,8 @@ class CoinsListingActivity : AppCompatActivity() {
         super.onStart()
 
         browseViewModel.getCoins().observe(this,
-                Observer<Resource<List<PresentationCoin>>> {
+                Observer<Resource<List<UiCoin>>> {
+                    Timber.e("it == null %s", it == null)
                     if (it != null) {
                         handleDataState(it)
                     }
@@ -51,22 +54,22 @@ class CoinsListingActivity : AppCompatActivity() {
         browseViewModel.fetchCoins()
     }
 
-    private fun handleDataState(resource: Resource<List<PresentationCoin>>) {
-
-        val mapper = UiCoinMapperImpl()
-
+    private fun handleDataState(resource: Resource<List<UiCoin>>) {
+        Timber.e("some data %s %s", resource.data == null, resource.state)
 
         when (resource.state) {
-            DataState.SUCCESS -> {
+            ResponseState.SUCCESS -> {
+                Timber.e("coins rain!")
                 progressBar.visibility = View.GONE
-                val coins = resource.data?.map { mapper.mapFromPresentation(it) }
-            //    Timber.e("kurwa %s", Gson().toJson(coins))
-
+                val coins = resource.data
+                if (coins != null)
+                    adapter.setCoins(coins)
             }
-            DataState.LOADING -> {
+            ResponseState.LOADING -> {
                 progressBar.visibility = View.VISIBLE
             }
-            DataState.ERROR -> {
+            ResponseState.ERROR -> {
+                Timber.e("error %s", resource.message)
                 progressBar.visibility = View.GONE
 
             }

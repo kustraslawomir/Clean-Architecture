@@ -7,8 +7,8 @@ import slawomir.kustra.cache.Constants.CACHCE_EXPIRATION_VALUE
 import slawomir.kustra.cache.database.CacheDatabase
 import slawomir.kustra.cache.mapper.CachedCoinsMapper
 import slawomir.kustra.cache.model.CacheConfig
-import slawomir.kustra.data.entity.listing.CoinEntity
-import slawomir.kustra.data.repository.CacheRepository
+import slawomir.kustra.data.model.listing.Coin
+import slawomir.kustra.data.repositories.CacheRepository
 import javax.inject.Inject
 
 open class CacheRepositoryImpl @Inject internal constructor(private val cachedCoinsMapper: CachedCoinsMapper,
@@ -19,7 +19,7 @@ open class CacheRepositoryImpl @Inject internal constructor(private val cachedCo
         Completable.complete()
     }
 
-    override fun saveCoinsInCash(coins: List<CoinEntity>): Completable = Completable.defer {
+    override fun saveCoinsInCash(coins: List<Coin>): Completable = Completable.defer {
         cacheDatabase.coinsDao().insertCoins(
                 coins.map {
                     cachedCoinsMapper.mapToCached(it)
@@ -27,7 +27,7 @@ open class CacheRepositoryImpl @Inject internal constructor(private val cachedCo
         Completable.complete()
     }
 
-    override fun getCoins(): Observable<List<CoinEntity>> = cacheDatabase
+    override fun getCoins(): Observable<List<Coin>> = cacheDatabase
             .coinsDao().getCachedCoins()
             .toObservable()
             .map { it ->
@@ -36,7 +36,7 @@ open class CacheRepositoryImpl @Inject internal constructor(private val cachedCo
                 }
             }
 
-    override fun getObservedCoins(): Observable<List<CoinEntity>> =
+    override fun getObservedCoins(): Observable<List<Coin>> =
             cacheDatabase.coinsDao().getObservedCoins()
                     .toObservable()
                     .map { it ->

@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 import slawomir.kustra.cache.CacheRepositoryImpl
 import slawomir.kustra.cache.database.CacheDatabase
-import slawomir.kustra.data.repository.CacheRepository
+import slawomir.kustra.data.repositories.CacheRepository
 
 @Module
 abstract class CacheModule {

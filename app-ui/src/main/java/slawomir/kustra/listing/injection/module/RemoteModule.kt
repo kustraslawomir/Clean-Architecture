@@ -3,7 +3,7 @@ package slawomir.kustra.listing.injection.module
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import slawomir.kustra.data.repository.RemoteRepository
+import slawomir.kustra.data.repositories.RemoteRepository
 import slawomir.kustra.remote.service.ApiService
 import slawomir.kustra.remote.service.ApiServiceFactory
 import slawomir.kustra.remote.service.RemoteRepositoryImpl

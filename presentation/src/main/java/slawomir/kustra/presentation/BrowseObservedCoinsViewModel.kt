@@ -3,17 +3,17 @@ package slawomir.kustra.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.observers.DisposableObserver
-import slawomir.kustra.domain.intercator.storage.GetObservedCoinsUseCase
-import slawomir.kustra.domain.model.listing.Coin
+import slawomir.kustra.data.model.listing.Coin
+import slawomir.kustra.data.usecase.local.GetObservedCoinsUseCase
 import slawomir.kustra.presentation.mapper.ViewCoinMapper
-import slawomir.kustra.presentation.model.PresentationCoin
-import slawomir.kustra.presentation.state.DataState
+import slawomir.kustra.presentation.model.UiCoin
 import slawomir.kustra.presentation.state.Resource
+import slawomir.kustra.presentation.state.ResponseState
 
 class BrowseObservedCoinsViewModel(private val getObservedCoinsUseCase: GetObservedCoinsUseCase,
-                                   private val viewCoinMapper: ViewCoinMapper<Coin, PresentationCoin>) : ViewModel() {
+                                   private val viewCoinMapper: ViewCoinMapper<Coin, UiCoin>) : ViewModel() {
 
-    private val coinData: MutableLiveData<Resource<List<PresentationCoin>>> = MutableLiveData()
+    private val coinData: MutableLiveData<Resource<List<UiCoin>>> = MutableLiveData()
 
     private fun getCoins() = coinData
 
@@ -23,13 +23,13 @@ class BrowseObservedCoinsViewModel(private val getObservedCoinsUseCase: GetObser
     }
 
     fun fetchCoins() {
-        coinData.postValue(Resource(DataState.LOADING, null, null))
+        coinData.postValue(Resource(ResponseState.LOADING, null, null))
         return getObservedCoinsUseCase.fetch(ObservedCoinsObservable())
     }
 
     inner class ObservedCoinsObservable : DisposableObserver<List<Coin>>() {
         override fun onNext(value: List<Coin>) {
-            coinData.postValue(Resource(DataState.SUCCESS, value.map {
+            coinData.postValue(Resource(ResponseState.SUCCESS, value.map {
                 viewCoinMapper.mapToViewCoin(it)
             }, null))
         }
@@ -39,7 +39,7 @@ class BrowseObservedCoinsViewModel(private val getObservedCoinsUseCase: GetObser
         }
 
         override fun onError(e: Throwable) {
-            coinData.postValue(Resource(DataState.ERROR, null, e.message))
+            coinData.postValue(Resource(ResponseState.ERROR, null, e.message))
         }
     }
 }

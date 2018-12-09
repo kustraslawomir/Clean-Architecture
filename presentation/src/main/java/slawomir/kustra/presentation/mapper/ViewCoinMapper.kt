@@ -1,6 +1,6 @@
 package slawomir.kustra.presentation.mapper
 
-interface ViewCoinMapper <in D, out V>  {
+interface ViewCoinMapper <in D, out U>  {
 
-    fun mapToViewCoin(type : D) : V
+    fun mapToViewCoin(type : D) : U
 }

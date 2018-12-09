@@ -61,7 +61,7 @@ dependencies {
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
 
-    compile project(':domain')
+    compile project(':data')
 
     compile presentationDependencies.kotlin
     compile presentationDependencies.javaxInject

@@ -10,6 +10,6 @@ class CryptoListingsResponse {
     var status: Status? = null
     @SerializedName("data")
     @Expose
-    var data: List<Coin>? = null
+    var data: List<ResponseCoin>? = null
 
 }
